@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 21" width="22" height="21">
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: #ff0000 } 
+	</style>
+	<g id="Artboard 1">
+		<path id="Path 114" class="shp0" d="M10.99 20.99C16.61 20.99 21.17 16.44 21.17 10.81C21.17 5.2 16.61 0.64 10.99 0.64C5.37 0.64 0.81 5.2 0.81 10.81C0.81 16.44 5.37 20.99 10.99 20.99Z" />
+	</g>
+</svg>

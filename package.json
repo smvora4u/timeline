@@ -1,0 +1,58 @@
+{
+  "name": "timelinewebsite",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.10.2",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "bootstrap": "^4.5.0",
+    "d3-scale": "^3.2.1",
+    "date-fns": "^2.14.0",
+    "firebase": "^7.18.0",
+    "material-table": "^1.68.1",
+    "react": "^16.13.1",
+    "react-activity": "^1.2.2",
+    "react-beautiful-dnd": "^13.0.0",
+    "react-bootstrap": "^1.0.1",
+    "react-color": "^2.19.3",
+    "react-compound-slider": "^2.5.0",
+    "react-csv-reader": "^3.1.1",
+    "react-dom": "^16.13.1",
+    "react-dropzone-uploader": "^2.11.0",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
+    "react-select": "^4.1.0",
+    "react-toastify": "^6.0.8",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "uuid": "^8.3.2",
+    "vis": "^4.21.0-EOL",
+    "vis-timeline": "^7.3.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

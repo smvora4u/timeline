@@ -1,0 +1,63 @@
+#main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgb(47,49,47);
+  /* background-image: url('./Assets/Background.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: 100% 100%; */
+}
+#my_timeslines {
+  /* min-height: 100vh; */
+  background-color: rgb(47,49,47);
+}
+
+#topbar {
+  /* flex: 1.25; */
+  /* background-color: pink; */
+}
+#visualization {
+  flex: 0.5;
+  /* background-color: aqua; */
+}
+#eventSlider{
+
+}
+#footer {
+  /* background-color: navy; */
+  /* flex: 1.75; */
+}
+div[role=slider] {
+  background-color: black;
+}
+
+/* .csv-reader-input {
+  background-color: violet;
+}
+.csv-input {
+  background-color: pink;
+} */
+/* styles to normalize vis */
+	.vis-item{
+		background-color:rgb(255,255,255,0) !important;
+		border-color:rgb(255,255,255,0) !important;
+		border-width:0px !important;
+		text-align: left !important;
+		white-space:pre-wrap !important;
+	}
+	.vis-item .vis-box{
+		text-align: left !important;
+		border-style: none !important;
+		border-radius: 0px !important;
+	}
+	.vis-item .vis-selected{
+		border-color:rgb(255,255,255,0) !important;
+		background-color:rgb(255,255,255,0) !important;
+	}
+	.vis-item .vis-item-content{
+		white-space:pre-wrap !important;
+	}
+	.vis-major, .vis-minor{
+		font-family:"Quantico"
+	}

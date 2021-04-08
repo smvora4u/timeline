@@ -1,0 +1,26 @@
+.vis-item {
+
+    background-color: rgb(255,255,255,0.1);
+    border: 0.1px solid white;
+}
+.vis-item-content {
+    min-height: 14vh;
+    min-width: 26vw;
+}
+
+.vis-item.vis-line.vis-editable{
+    display: none;
+}
+.vis-item.vis-line.vis-selected.vis-editable{
+    display: none;
+}
+.vis-item.vis-selected {
+    border: 3px solid green;
+    background-color: lightgreen;
+}
+.vis-dot {
+    display: none;
+}
+.vis-line {
+    display: none;
+}
