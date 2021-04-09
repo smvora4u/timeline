@@ -41,14 +41,13 @@ const BorderBottomLines = ({ handleStatus, handleHeight, changeHeight }) => {
       <div style={{ border: "2px solid red", borderRadius: 2 }}></div>
       <span style={{ 
           cursor: "pointer", 
-          height: "20px", 
-          width: "20px", 
-          backgroundColor: "green", 
+          height: "25px", 
+          width: "25px", 
           position: "absolute", 
-          top: "0px", 
-          left: "55%", 
+          top: "3px", 
+          right: "27px", 
           zIndex: "1" }}
-          onClick={changeHeight}></span>
+          onClick={changeHeight}><img style={{ margin: "3px"}} alt="down" src={require("../../Assets/optionsButton_Down.svg").default} /></span>
       <div
         style={{ border: "2px solid red", marginTop: "4px", borderRadius: 2 }}
       ></div>
@@ -129,10 +128,9 @@ export default function App() {
   
 
   const changeHeight = () => {
-    // alert("changeHeight called..");
-    let heightCal = 20;
+    let heightCal = 20.6;
 
-    if(heightStep === 3) {
+    if(heightStep === 5) {
       setHeight(20);
       heightStep = 0;
     } else {

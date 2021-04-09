@@ -22,8 +22,6 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import { toast } from "react-toastify";
-import BookMarkTitle from "./BookMarkTitle.js";
-import BookMarkTitleContext from "./BookMarkTitle.js";
 import { setBookmarkTitle } from "../../../Redux/Actions/BookmarkTitleActions.js"
 
 const useStyles = makeStyles((theme) => ({
@@ -138,7 +136,6 @@ const useStyles = makeStyles((theme) => ({
 const Event = ({ chapter, event, index, removeEvent, timeline }) => {
   const classes = useStyles();
   const [readOnly, setReadOnly] = useState(true);
-  // let [bookmarkTitle, setBookmarkTitle] = useState("");
   const dispatch = useDispatch();
   const makeReadOnly = () => {
     setReadOnly(true);
@@ -152,9 +149,6 @@ const Event = ({ chapter, event, index, removeEvent, timeline }) => {
   };
 
 
-  // const updateBookmarkTitle = (title) => {
-  //   setBookmarkTitle(title);
-  // }
 
   return (
     <Draggable draggableId={event.id} index={index}>
@@ -171,8 +165,7 @@ const Event = ({ chapter, event, index, removeEvent, timeline }) => {
             className={classes.circle}
             {...provided.dragHandleProps}
             onClick={() => {
-              let fullBookmarkTitle = chapter.title + " | " + event.content;
-              dispatch(setBookmarkTitle({ bookMarkTitle : fullBookmarkTitle }));
+              dispatch(setBookmarkTitle({ bookMarkTitle : event.content, bookMarkChapter : chapter.title }));
               timeline.focus(event.id, {
                 animation: {
                   duration: 500,

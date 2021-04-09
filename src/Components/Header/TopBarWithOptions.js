@@ -133,7 +133,6 @@ export default function PrimarySearchAppBar() {
   const [date, setDate] = React.useState(`${arrayOfWeekdays[d.getDay()]} ${d.getDate()}TH ${monthNames[d.getMonth()]} ${d.getFullYear()}`);
   //const [time, setTime] = React.useState(new Date().toLocaleTimeString());
   const [search, setSearch] = React.useState("");
-  // const bookMarkTitle = useContext(BookMarkTitleContext);
 
   const itemsDataSet = useSelector((state) => state.Timeline.itemsDataSet);
   const bookMarkTitleData = useSelector((state) => state.BookMarkTitle);
@@ -321,7 +320,7 @@ export default function PrimarySearchAppBar() {
                     paddingRight: 17
                   }}
                 >
-                  <i>Chapter 1</i>{" "}
+                  <i>{ bookMarkTitleData.bookMarkChapter ? bookMarkTitleData.bookMarkChapter : "Chapter" }</i>{" "}
                 </Typography>
 
               </div>
@@ -368,7 +367,7 @@ export default function PrimarySearchAppBar() {
                     </div>
                   </div>
                 </div>
-                <div style={{paddingLeft: 13, fontFamily: "K2D"}}>{ bookMarkTitleData ? bookMarkTitleData.bookMarkTitle : "BM Title"}</div>
+                <div style={{paddingLeft: 13, fontFamily: "K2D"}}>{ bookMarkTitleData.bookMarkTitle ? bookMarkTitleData.bookMarkTitle : "BM Title"}</div>
 
               </div>
 
