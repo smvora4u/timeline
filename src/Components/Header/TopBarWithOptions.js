@@ -325,45 +325,47 @@ export default function PrimarySearchAppBar() {
                 </Typography>
 
               </div>
-              <div style={{ display: "flex", flex: 0.88, flexDirection: "row", justifyContent: "space-between" }}>
-                <div style={{ display: "flex", flexWrap: 'nowrap'}}>
-                  <div style={{ flex: 0.2, paddingLeft: 13 }}>
-                    <Typography
-                      variant="caption"
-                      style={{
-                        fontWeight: 600,
-                        fontSize: 12,
-                        color: "#259379",
-                        fontFamily: "Quantico",
-                      }}
-                    >
-                      <Time />
-                      {/* <BookMarkTitleContext.Consumer>
-                        {
-                          (context) => {
-                            alert('consumer updated');
-                            return (
-                              <div>{context}</div>
-                            )
+              <div style={{ flex: 0.88, flexDirection: "row", justifyContent: "space-between" }}>
+                <div style={{ width: "100%" }}>
+                  <div style={{ display: "flex" }}>
+                    <div style={{ flex: 0.2, paddingLeft: 13 }}>
+                      <Typography
+                        variant="caption"
+                        style={{
+                          fontWeight: 600,
+                          fontSize: 12,
+                          color: "#259379",
+                          fontFamily: "Quantico",
+                        }}
+                      >
+                        <Time />
+                        {/* <BookMarkTitleContext.Consumer>
+                          {
+                            (context) => {
+                              alert('consumer updated');
+                              return (
+                                <div>{context}</div>
+                              )
+                            }
                           }
-                        }
-                      </BookMarkTitleContext.Consumer> */}
-                    </Typography>
-                    
-                  </div>
-                  <div style={{ flex: 0.8, textAlign: 'end' }}>
-                    <Typography
-                      variant="caption"
-                      style={{
-                        fontWeight: 600,
-                        fontSize: 10,
-                        color: "yellow",
-                        whiteSpace: 'nowrap',
-                        fontFamily: "Quantico",
-                      }}
-                    >
-                      {date.toLocaleUpperCase()}
-                    </Typography>
+                        </BookMarkTitleContext.Consumer> */}
+                      </Typography>
+                      
+                    </div>
+                    <div style={{ flex: 0.8, textAlign: 'end' }}>
+                      <Typography
+                        variant="caption"
+                        style={{
+                          fontWeight: 600,
+                          fontSize: 10,
+                          color: "yellow",
+                          whiteSpace: 'nowrap',
+                          fontFamily: "Quantico",
+                        }}
+                      >
+                        {date.toLocaleUpperCase()}
+                      </Typography>
+                    </div>
                   </div>
                 </div>
                 <div style={{paddingLeft: 13}}>{ bookMarkTitleData ? bookMarkTitleData.bookMarkTitle : "BM Title"}</div>
