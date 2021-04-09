@@ -14,7 +14,7 @@ export default function BookmarkManagerReducer(state = initState, actions) {
           ...state,
         bookmarkShow: actions.payload
       }
-      return state;
+      // return state;
     default:
       return state;
   }

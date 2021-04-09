@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { withStyles, fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -12,10 +12,12 @@ import { useSelector } from "react-redux";
 import SearchBar from "./SearchBar.js";
 import Time from "./Time.js";
 import Background from '../../Assets/TL_Lines_Top.svg';
+import BookMarkTitle from '../Timeline/Controls/BookMarkTitle';
 //import MenuIcon from "@material-ui/icons/Menu";
 //import AccountCircle from "@material-ui/icons/AccountCircle";
 
 import { logoutUser } from "../../Firebase/FirebaseRegistration";
+import BookMarkTitleContext from "../Timeline/Controls/BookMarkTitle";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -131,7 +133,10 @@ export default function PrimarySearchAppBar() {
   const [date, setDate] = React.useState(`${arrayOfWeekdays[d.getDay()]} ${d.getDate()}TH ${monthNames[d.getMonth()]} ${d.getFullYear()}`);
   //const [time, setTime] = React.useState(new Date().toLocaleTimeString());
   const [search, setSearch] = React.useState("");
+  // const bookMarkTitle = useContext(BookMarkTitleContext);
+
   const itemsDataSet = useSelector((state) => state.Timeline.itemsDataSet);
+  const bookMarkTitleData = useSelector((state) => state.BookMarkTitle);
   const timeline = useSelector((state) => state.Timeline.timeline);
   const searchItems = (value) => () => {
     let results = itemsDataSet
@@ -321,33 +326,47 @@ export default function PrimarySearchAppBar() {
 
               </div>
               <div style={{ display: "flex", flex: 0.88, flexDirection: "row", justifyContent: "space-between" }}>
-                <div style={{ flex: 0.2, paddingLeft: 13 }}>
-                  <Typography
-                    variant="caption"
-                    style={{
-                      fontWeight: 600,
-                      fontSize: 12,
-                      color: "#259379",
-                      fontFamily: "Quantico",
-                    }}
-                  >
-                    <Time />
-                  </Typography>
+                <div style={{ display: "flex", flexWrap: 'nowrap'}}>
+                  <div style={{ flex: 0.2, paddingLeft: 13 }}>
+                    <Typography
+                      variant="caption"
+                      style={{
+                        fontWeight: 600,
+                        fontSize: 12,
+                        color: "#259379",
+                        fontFamily: "Quantico",
+                      }}
+                    >
+                      <Time />
+                      {/* <BookMarkTitleContext.Consumer>
+                        {
+                          (context) => {
+                            alert('consumer updated');
+                            return (
+                              <div>{context}</div>
+                            )
+                          }
+                        }
+                      </BookMarkTitleContext.Consumer> */}
+                    </Typography>
+                    
+                  </div>
+                  <div style={{ flex: 0.8, textAlign: 'end' }}>
+                    <Typography
+                      variant="caption"
+                      style={{
+                        fontWeight: 600,
+                        fontSize: 10,
+                        color: "yellow",
+                        whiteSpace: 'nowrap',
+                        fontFamily: "Quantico",
+                      }}
+                    >
+                      {date.toLocaleUpperCase()}
+                    </Typography>
+                  </div>
                 </div>
-                <div style={{ flex: 0.8, textAlign: 'end' }}>
-                  <Typography
-                    variant="caption"
-                    style={{
-                      fontWeight: 600,
-                      fontSize: 10,
-                      color: "yellow",
-                      whiteSpace: 'nowrap',
-                      fontFamily: "Quantico",
-                    }}
-                  >
-                    {date.toLocaleUpperCase()}
-                  </Typography>
-                </div>
+                <div style={{paddingLeft: 13}}>{ bookMarkTitleData ? bookMarkTitleData.bookMarkTitle : "BM Title"}</div>
 
               </div>
 

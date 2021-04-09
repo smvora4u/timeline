@@ -22,6 +22,9 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import { toast } from "react-toastify";
+import BookMarkTitle from "./BookMarkTitle.js";
+import BookMarkTitleContext from "./BookMarkTitle.js";
+import { setBookmarkTitle } from "../../../Redux/Actions/BookmarkTitleActions.js"
 
 const useStyles = makeStyles((theme) => ({
   event: {
@@ -135,6 +138,7 @@ const useStyles = makeStyles((theme) => ({
 const Event = ({ event, index, removeEvent, timeline }) => {
   const classes = useStyles();
   const [readOnly, setReadOnly] = useState(true);
+  // let [bookmarkTitle, setBookmarkTitle] = useState("");
   const dispatch = useDispatch();
   const makeReadOnly = () => {
     setReadOnly(true);
@@ -147,6 +151,11 @@ const Event = ({ event, index, removeEvent, timeline }) => {
     dispatch(renameEvent({ id: event.id, content: ev.target.value }));
   };
 
+
+  // const updateBookmarkTitle = (title) => {
+  //   setBookmarkTitle(title);
+  // }
+
   return (
     <Draggable draggableId={event.id} index={index}>
       {(provided, snapshot) => (
@@ -157,10 +166,12 @@ const Event = ({ event, index, removeEvent, timeline }) => {
             [classes.selected]: snapshot.isDragging,
           })}
         >
+          {/* <BookMarkTitle data={ state.data } style={{ display : "none" }} /> */}
           <span
             className={classes.circle}
             {...provided.dragHandleProps}
             onClick={() => {
+              dispatch(setBookmarkTitle({ bookMarkTitle : event.content }));
               timeline.focus(event.id, {
                 animation: {
                   duration: 500,
@@ -185,6 +196,7 @@ const Event = ({ event, index, removeEvent, timeline }) => {
           <div onClick={removeEvent} className={classes.eventRemove}>
             <img src={minus} alt="minus" style={{ height: "20px" }} />
           </div>
+          {/* <BookMarkTitleContext.Provider value={bookmarkTitle}></BookMarkTitleContext.Provider> */}
         </div>
       )}
     </Draggable>

@@ -19,7 +19,7 @@ import "firebase/database";
 import { BACKGROUND_COLOR } from "../../Constants/StylesConstants";
 import ViewControls from "./Controls/ViewControls.js";
 
-const BorderBottomLines = ({ handleStatus, handleHeight }) => {
+const BorderBottomLines = ({ handleStatus, handleHeight, changeHeight }) => {
   return (
     <div
       style={{
@@ -39,6 +39,16 @@ const BorderBottomLines = ({ handleStatus, handleHeight }) => {
       onMouseUp={handleStatus(false)}
 			  */}
       <div style={{ border: "2px solid red", borderRadius: 2 }}></div>
+      <span style={{ 
+          cursor: "pointer", 
+          height: "20px", 
+          width: "20px", 
+          backgroundColor: "green", 
+          position: "absolute", 
+          top: "0px", 
+          left: "55%", 
+          zIndex: "1" }}
+          onClick={changeHeight}></span>
       <div
         style={{ border: "2px solid red", marginTop: "4px", borderRadius: 2 }}
       ></div>
@@ -82,6 +92,8 @@ const getEvents = async (dispatch) => {
     });
 };
 
+let heightStep = 1;
+
 export default function App() {
   const groupsData = useSelector((state) => state.Groups);
   const itemsData = useSelector((state) => state.Items);
@@ -97,6 +109,8 @@ export default function App() {
   const handleHeight = (e) => {
     //let k = Number(window.getComputedStyle(root).height.split("px")[0])
     if (status) {
+      const handler = e;
+      console.log(handler);
       let k = 978;
       console.log(e.clientY, k);
       //let k = window.getComputedStyle(root).height
@@ -107,8 +121,24 @@ export default function App() {
       }
     }
   };
+
   const handleStatus = (value) => () => {
     setStatus(value);
+  };
+
+  
+
+  const changeHeight = () => {
+    // alert("changeHeight called..");
+    let heightCal = 20;
+
+    if(heightStep === 3) {
+      setHeight(20);
+      heightStep = 0;
+    } else {
+      setHeight(window.innerHeight * heightCal * heightStep * 0.01);
+    }
+    heightStep++;
   };
 
   //console.log(groupsData, itemsData, groupsDataSet, itemsDataSet);
@@ -246,7 +276,9 @@ export default function App() {
       >
         <BorderBottomLines
           handleStatus={handleStatus}
-          handleHeight={handleHeight}
+          // handleHeight={handleHeight}
+          changeHeight={changeHeight}
+          // heightStep={heightStep}
         />
         <div style={{ flex: 1, display: "flex" }}>
           <div
