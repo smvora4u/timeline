@@ -236,7 +236,7 @@ export default function PrimarySearchAppBar() {
             >
               {/* <AccountCircle fontSize="inherit" /> */}
               <img
-                src={require("../../Assets/menu.png")}
+                src={require("../../Assets/menu.png").default}
                 style={{ height: 70, width: "auto" }}
                 alt="menu"
               />
@@ -278,7 +278,7 @@ export default function PrimarySearchAppBar() {
 
           <div style={{ display: "flex", flexDirection: "column" }}>
             <img
-              src={require("../../Assets/version1/Timeline_Logo_01.svg")}
+              src={require("../../Assets/version1/Timeline_Logo_01.svg").default}
               style={{ height: 80, width: "auto" }}
               alt="rightHeader"
             />
