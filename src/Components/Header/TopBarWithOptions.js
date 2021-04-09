@@ -368,7 +368,7 @@ export default function PrimarySearchAppBar() {
                     </div>
                   </div>
                 </div>
-                <div style={{paddingLeft: 13}}>{ bookMarkTitleData ? bookMarkTitleData.bookMarkTitle : "BM Title"}</div>
+                <div style={{paddingLeft: 13, fontFamily: "K2D"}}>{ bookMarkTitleData ? bookMarkTitleData.bookMarkTitle : "BM Title"}</div>
 
               </div>
 

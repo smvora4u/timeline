@@ -135,7 +135,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Event = ({ event, index, removeEvent, timeline }) => {
+const Event = ({ chapter, event, index, removeEvent, timeline }) => {
   const classes = useStyles();
   const [readOnly, setReadOnly] = useState(true);
   // let [bookmarkTitle, setBookmarkTitle] = useState("");
@@ -171,7 +171,8 @@ const Event = ({ event, index, removeEvent, timeline }) => {
             className={classes.circle}
             {...provided.dragHandleProps}
             onClick={() => {
-              dispatch(setBookmarkTitle({ bookMarkTitle : event.content }));
+              let fullBookmarkTitle = chapter.title + " | " + event.content;
+              dispatch(setBookmarkTitle({ bookMarkTitle : fullBookmarkTitle }));
               timeline.focus(event.id, {
                 animation: {
                   duration: 500,
@@ -228,6 +229,7 @@ const Chapter = ({
     <Event
       key={event.id}
       event={event}
+      chapter={chapter}
       index={i}
       removeEvent={removeEvent(event.id)}
       timeline={timeline}
