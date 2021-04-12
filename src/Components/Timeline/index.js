@@ -208,6 +208,7 @@ export default function App() {
             backgroundColor: BACKGROUND_COLOR,
             borderRadius: "25px",
             zIndex: 30000,
+            userSelect: "none"
           }}
         >
           <BookMarkControls />
@@ -220,6 +221,7 @@ export default function App() {
             backgroundColor: BACKGROUND_COLOR,
             borderRadius: "30px",
             zIndex: 30000,
+            userSelect: "none"
           }}
         >
           <ViewControls />
