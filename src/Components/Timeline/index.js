@@ -31,7 +31,7 @@ const BorderBottomLines = ({ handleStatus, handleHeight }) => {
         width: "100%",
         top: "5px",
       }}
-      onMouseDown={handleStatus(true)}
+      // onMouseDown={handleStatus(true)}
     >
       {/*
       onMouseMove={handleHeight}
@@ -172,7 +172,7 @@ export default function App() {
     <div
       style={{ position: "relative", marginTop: 40 }}
       // onMouseMove={handleHeight}
-      onMouseUp={handleStatus(false)}
+      // onMouseUp={handleStatus(false)}
     >
       <div style={{
         width: 15,

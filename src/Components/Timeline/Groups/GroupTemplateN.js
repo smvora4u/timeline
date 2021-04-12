@@ -14,6 +14,10 @@ import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import { useSelector, useDispatch } from "react-redux";
 import { ChromePicker } from "react-color";
 import colorIcon from "../../../Assets/colour.svg";
+import groupFilterIcon from  "../../../Assets/groupFilter_.svg";
+import groupFindIcon from "../../../Assets/groupFind_.svg";
+import storyModeIcon from "../../../Assets/storyMode.svg";
+import tabOnOffIcon from "../../../Assets/tabOnOff.svg";
 import { setGroupColor } from "../../../Redux/Actions/GroupActions.js";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -85,6 +89,22 @@ export default function GroupTemplate({ group }) {
     //remove group
     groupsDataSet.remove(id);
   };
+
+  const filterTimeline = () => {
+    alert('filterTimeline button clicked..');
+  }
+
+  const storyMode = () => {
+    alert('storyMode button clicked..');
+  }
+
+  const showHideGroup = () => {
+    alert('showHideGroup button clicked..');
+  }
+
+  const gotoGroup = () => {
+    alert('gotoGroup button clicked..');
+  }
   //console.log("cl", imageURL);
   return (
     <>
@@ -105,7 +125,7 @@ export default function GroupTemplate({ group }) {
             item
             lg={12}
             style={{
-              maxWidth: 300,
+              maxWidth: 330,
               backgroundColor: "rgb(47,49,47)",
               color: "white",
               //border: "none",
@@ -122,22 +142,36 @@ export default function GroupTemplate({ group }) {
               }}
             />
 
-            <CardActions>
-              <IconButton onClick={() => removeGroup()}>
+            <CardActions style={{ cursor: "default" }}>
+              <IconButton onClick={() => removeGroup()} style={{ padding : "12px 5px" }}>
                 <DeleteIcon style={{ color: "red" }} />
               </IconButton>
-              <IconButton onClick={handleOpenModal}>
+              <IconButton onClick={handleOpenModal} style={{ padding : "12px 5px" }}>
                 <img src={colorIcon} style={{ height: "30px" }} alt="color" />
               </IconButton>
+              
               {show ? (
-                <IconButton onClick={handleShow}>
+                <IconButton onClick={handleShow} style={{ padding : "12px 5px" }}>
                   <VisibilityOffIcon style={{ color: "white" }} />
                 </IconButton>
               ) : (
-                <IconButton onClick={handleShow}>
+                <IconButton onClick={handleShow} style={{ padding : "12px 5px" }}>
                   <VisibilityIcon style={{ color: "white" }} />
                 </IconButton>
               )}
+              <IconButton onClick={filterTimeline} style={{ padding : "12px 5px" }}>
+                <img src={groupFilterIcon} style={{ height: "30px" }} alt="color" />
+              </IconButton>
+              <IconButton onClick={storyMode} style={{ padding : "12px 5px" }}>
+                <img src={storyModeIcon} style={{ height: "30px" }} alt="color" />
+              </IconButton>
+              <IconButton onClick={gotoGroup} style={{ padding : "12px 5px" }}>
+                <img src={groupFindIcon} style={{ height: "30px" }} alt="color" />
+              </IconButton>
+              <IconButton onClick={showHideGroup} style={{ padding : "12px 5px" }}>
+                <img src={tabOnOffIcon} style={{ height: "30px" }} alt="color" />
+              </IconButton>
+              
             </CardActions>
           </Grid>
         </Grid>
