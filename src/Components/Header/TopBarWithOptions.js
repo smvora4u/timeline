@@ -367,7 +367,18 @@ export default function PrimarySearchAppBar() {
                     </div>
                   </div>
                 </div>
-                <div style={{paddingLeft: 13, fontFamily: "K2D"}}>{ bookMarkTitleData.bookMarkTitle ? bookMarkTitleData.bookMarkTitle : "BM Title"}</div>
+                <div 
+                  style={{
+                    paddingLeft: 13, 
+                    fontFamily: "K2D",
+                    height: 20,
+                    width: 200,
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                    textOverflow: "ellipsis",
+                    cursor: "default"
+                    }}
+                  title={bookMarkTitleData.bookMarkTitle}>{ bookMarkTitleData.bookMarkTitle ? bookMarkTitleData.bookMarkTitle : "BM Title"}</div>
 
               </div>
 
