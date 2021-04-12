@@ -170,6 +170,7 @@ export default function GroupTemplate({ group }) {
                   <VisibilityIcon style={{ color: "white" }} />
                 </IconButton>
               )}
+            </CardActions>
           </Grid>
         </Grid>
       </Grid>
