@@ -19,15 +19,14 @@ import "firebase/database";
 import { BACKGROUND_COLOR } from "../../Constants/StylesConstants";
 import ViewControls from "./Controls/ViewControls.js";
 
-const BorderBottomLines = ({ handleStatus, handleHeight, changeHeight }) => {
+const BorderBottomLines = ({ handleStatus, handleHeight }) => {
   return (
     <div
       style={{
         marginLeft: "20px",
         marginRight: "20px",
         marginBottom: "1px",
-        cursor: "ns-resize",
-        height: "20px",
+        height: "50px",
         position: "absolute",
         width: "100%",
         top: "5px",
@@ -39,15 +38,6 @@ const BorderBottomLines = ({ handleStatus, handleHeight, changeHeight }) => {
       onMouseUp={handleStatus(false)}
 			  */}
       <div style={{ border: "2px solid red", borderRadius: 2 }}></div>
-      <span style={{ 
-          cursor: "pointer", 
-          height: "25px", 
-          width: "25px", 
-          position: "absolute", 
-          top: "3px", 
-          right: "27px", 
-          zIndex: "1" }}
-          onClick={changeHeight}><img style={{ margin: "3px"}} alt="down" src={require("../../Assets/optionsButton_Down.svg").default} /></span>
       <div
         style={{ border: "2px solid red", marginTop: "4px", borderRadius: 2 }}
       ></div>
@@ -99,7 +89,7 @@ export default function App() {
   const userData = useSelector((state) => state.UserData);
   const groupsDataSet = useSelector((state) => state.Timeline.groupsDataSet);
   const itemsDataSet = useSelector((state) => state.Timeline.itemsDataSet);
-  const [height, setHeight] = useState(20);
+  const [height, setHeight] = useState(50);
   const [status, setStatus] = useState(false);
   const dispatch = useDispatch();
   const [isLoading, setLoading] = React.useState(true);
@@ -129,9 +119,8 @@ export default function App() {
 
   const changeHeight = () => {
     let heightCal = 20.6;
-
     if(heightStep === 5) {
-      setHeight(20);
+      setHeight(50);
       heightStep = 0;
     } else {
       setHeight(window.innerHeight * heightCal * heightStep * 0.01);
@@ -182,7 +171,7 @@ export default function App() {
   return (
     <div
       style={{ position: "relative", marginTop: 40 }}
-      onMouseMove={handleHeight}
+      // onMouseMove={handleHeight}
       onMouseUp={handleStatus(false)}
     >
       <div style={{
@@ -236,7 +225,7 @@ export default function App() {
           <ViewControls />
         </div>
       </Grid>
-      <Grid container style={{ height: "75px" }}>
+      <Grid container style={{ height: "142px" }}>
         <Grid
           item
           xs={4}
@@ -278,7 +267,7 @@ export default function App() {
           changeHeight={changeHeight}
           // heightStep={heightStep}
         />
-        <div style={{ flex: 1, display: "flex" }}>
+        <div class="canvasHandle">
           <div
             style={{
               width: "50px",
@@ -296,6 +285,14 @@ export default function App() {
               clipPath: "polygon(25% 0%, 100% 0%,100% 100%, 0% 100%,0% 30px)",
             }}
           ></div>
+          <span 
+          class="canvasHandleControl"
+          onClick={changeHeight}>
+            <img 
+              style={{ margin: "3px"}} 
+              alt="down" 
+              src={require("../../Assets/optionsButton_Down.svg").default} />
+          </span>
         </div>
       </div>
     </div>
