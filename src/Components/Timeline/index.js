@@ -209,7 +209,7 @@ export default function App() {
             borderRadius: "25px",
             zIndex: 30000,
             userSelect: "none",
-            transition: "bottom 0.5s"
+            transition: "bottom 0.5s linear"
           }}
         >
           <BookMarkControls />
@@ -223,7 +223,7 @@ export default function App() {
             borderRadius: "30px",
             zIndex: 30000,
             userSelect: "none",
-            transition: "bottom 0.5s"
+            transition: "bottom 0.5s linear"
           }}
         >
           <ViewControls />
@@ -263,7 +263,7 @@ export default function App() {
           overflowY: "hidden",
           overflowX: "hidden",
           backgroundColor: BACKGROUND_COLOR,
-          transition: "height 0.5s",
+          transition: "height 0.5s linear",
         }}
       >
         <BorderBottomLines

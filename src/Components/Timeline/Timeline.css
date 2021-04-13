@@ -48,11 +48,15 @@ div[role=slider] {
 	top: 3px;
 	right: 5px;
 	z-index: 1;
-	display: none;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.2s linear, visibility 0.2s linear;
+	-webkit-transition: opacity 0.2s linear, visibility 0.2s linear;
 }
 
 .canvasHandle:hover .canvasHandleControl{
-	display: block;
+	visibility: visible;
+	opacity: 1;
 }
 
 /* .csv-reader-input {
