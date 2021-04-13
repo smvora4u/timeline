@@ -215,7 +215,7 @@ export default function PrimarySearchAppBar() {
             />
           </div>
 
-          <div style={{ position: "fixed", right: 50, top: 90, width: 450 }}>
+          <div style={{ position: "absolute", right: 50, top: 90, width: 450 }}>
             <div style={{ display: "flex", flex: 1, flexDirection: "row" }}>
               <div
                 style={{
