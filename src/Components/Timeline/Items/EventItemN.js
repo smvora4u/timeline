@@ -231,7 +231,7 @@ const EventItem = (props) => {
         aria-labelledby="item selected"
         aria-describedby="select an even to view it's details"
         style={{
-          width: "110vw",
+          width: "100vw",
           height: "100vh",
           display: "flex",
           justifyContent: "center",
@@ -242,7 +242,8 @@ const EventItem = (props) => {
         PaperProps={{
           style: {
             borderRadius: "10px",
-            overflow:"visible"
+            overflow:"visible",
+            maxWidth: "initial"
           },
         }}
         fullWidth={true}
