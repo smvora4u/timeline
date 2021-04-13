@@ -1,5 +1,6 @@
 import { makeStyles, createMuiTheme } from "@material-ui/core";
 export const BACKGROUND_COLOR = 'rgb(47,49,47)'
+export const BACKGROUND_COLOR_CANVAS = 'rgba(47,49,47,0.5)'
 export const THEME_COLOR = 'rgb(71,72,110)'
 export const useStyles = makeStyles((theme) => ({
     root: {

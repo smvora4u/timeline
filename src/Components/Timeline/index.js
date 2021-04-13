@@ -17,6 +17,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import { BACKGROUND_COLOR } from "../../Constants/StylesConstants";
+import { BACKGROUND_COLOR_CANVAS } from "../../Constants/StylesConstants";
 import ViewControls from "./Controls/ViewControls.js";
 
 const BorderBottomLines = ({ handleStatus, handleHeight }) => {
@@ -262,7 +263,7 @@ export default function App() {
           flexDirection: "column",
           overflowY: "hidden",
           overflowX: "hidden",
-          backgroundColor: BACKGROUND_COLOR,
+          backgroundColor: BACKGROUND_COLOR_CANVAS,
           transition: "height 0.5s linear",
         }}
       >
