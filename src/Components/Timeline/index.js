@@ -83,6 +83,7 @@ const getEvents = async (dispatch) => {
 };
 
 let heightStep = 1;
+let clickTimeout = null;
 
 export default function App() {
   const groupsData = useSelector((state) => state.Groups);
@@ -116,17 +117,31 @@ export default function App() {
     setStatus(value);
   };
 
-  
 
   const changeHeight = () => {
     let heightCal = 20.6;
-    if(heightStep === 5) {
+    if(clickTimeout !== null) {
+      // double click logic
       setHeight(50);
-      heightStep = 0;
+      heightStep = 1;
+      clearTimeout(clickTimeout);
+      clickTimeout = null;
     } else {
-      setHeight(window.innerHeight * heightCal * heightStep * 0.01);
+      // single click logic
+      clickTimeout = setTimeout(() => {
+        // first click executes
+        if(heightStep === 5) {
+          setHeight(50);
+          heightStep = 0;
+        } else {
+          setHeight(window.innerHeight * heightCal * heightStep * 0.01);
+        }
+        heightStep++;
+        clearTimeout(clickTimeout);
+        clickTimeout = null;
+      },200)
     }
-    heightStep++;
+
   };
 
   //console.log(groupsData, itemsData, groupsDataSet, itemsDataSet);
