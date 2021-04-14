@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
 import { useSelector, useDispatch } from "react-redux";
 import BookMarkControls from "./Controls/BookMarkControls.js";
 import TimeRangeSlider from "./Controls/TimeRangeSlider.js";
@@ -19,6 +20,8 @@ import "firebase/database";
 import { BACKGROUND_COLOR } from "../../Constants/StylesConstants";
 import { BACKGROUND_COLOR_CANVAS } from "../../Constants/StylesConstants";
 import ViewControls from "./Controls/ViewControls.js";
+
+import optionBtnIcon from "../../Assets/optionsButton.svg";
 
 const BorderBottomLines = ({ handleStatus, handleHeight }) => {
   return (
@@ -144,6 +147,17 @@ export default function App() {
 
   };
 
+
+  document.addEventListener('click', (e) => {
+    let element = document.querySelector('.optionsBtn');
+
+    if(element.contains(e.target)) {
+      element.classList.add('showOptions');
+    } else {
+      element.classList.remove('showOptions');
+    }
+  });
+
   //console.log(groupsData, itemsData, groupsDataSet, itemsDataSet);
   React.useEffect(() => {
     if (first) {
@@ -255,6 +269,43 @@ export default function App() {
             alignItems: "flex-start",
           }}
         >
+          <div class="optionsBtn">
+            <IconButton onClick={''} style={{ padding: "0px", marginRight: "50px" }}>
+              <img src={optionBtnIcon} style={{ height: "45px" }} alt="color" />
+            </IconButton>
+            <ul class="optionsMenu">
+              <li>
+                <span>Ctrl Zoom Lock</span>
+                <span class="toggleBtn"></span>
+              </li>
+              <li>
+                <span>Files Tabs</span>
+                <span class="toggleBtn"></span>
+              </li>
+              <li>
+                <span>Profile Tabs</span>
+                <span class="toggleBtn"></span>
+              </li>
+              <li>
+                <span>Tags Tabs</span>
+                <span class="toggleBtn"></span>
+              </li>
+              <li>
+                <span>Bookmark Title Display</span>
+                <span class="toggleBtn"></span>
+              </li>
+              <hr />
+              <li>
+                <span>Background Colors</span>
+                <span class="toggleBtn"></span>
+              </li>
+              <li>
+                <span>Background Picture</span>
+                <i></i>
+                <span class="toggleBtn"></span>
+              </li>
+            </ul>
+          </div>
           <TimeRangeSlider />
           <div />
         </Grid>

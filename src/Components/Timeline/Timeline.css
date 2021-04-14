@@ -59,6 +59,44 @@ div[role=slider] {
 	opacity: 1;
 }
 
+.optionsBtn {
+	position: relative;
+}
+
+.optionsBtn .optionsMenu {
+	list-style: none;
+	position: absolute;
+	background-color: aliceblue;
+	border: 1px solid lightblue;
+	border-radius: 10px;
+	z-index: 20001;
+	bottom: 100%;
+	padding: 10px 10px 0 10px;
+	width: 250px;
+	margin-bottom: 5px;
+	font-weight: bold;
+	display: none;
+}
+
+.optionsBtn.showOptions .optionsMenu {
+	display: block;
+}
+
+.optionsBtn .optionsMenu li {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.optionsBtn .optionsMenu li > .toggleBtn {
+	cursor: pointer;
+	width: 40px;
+	height: 20px;
+	display: inline-block;
+	border: 1px solid rgb(180, 179, 179);
+}
+
+
 /* .csv-reader-input {
   background-color: violet;
 }
