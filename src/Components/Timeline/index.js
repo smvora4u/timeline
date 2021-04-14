@@ -27,24 +27,27 @@ const BorderBottomLines = ({ handleStatus, handleHeight }) => {
   return (
     <div
       style={{
-        marginLeft: "20px",
-        marginRight: "20px",
+        padding: "0 35px",
         marginBottom: "1px",
-        height: "50px",
+        height: "10px",
         position: "absolute",
         width: "100%",
         top: "5px",
+        cursor: "n-resize",
+        zIndex: "1"
       }}
-      // onMouseDown={handleStatus(true)}
+      onMouseDown={handleStatus(true)}
+      // onMouseUp={handleStatus(false)}
+      // onMouseMove={handleHeight}
     >
-      {/*
-      onMouseMove={handleHeight}
-      onMouseUp={handleStatus(false)}
-			  */}
-      <div style={{ border: "2px solid red", borderRadius: 2 }}></div>
-      <div
-        style={{ border: "2px solid red", marginTop: "4px", borderRadius: 2 }}
-      ></div>
+      
+        {/*
+        onMouseMove={handleHeight}
+        onMouseUp={handleStatus(false)}
+      */}
+        <div style={{ border: "2px solid red", borderRadius: 2 }}></div>
+        <div style={{ border: "2px solid red", marginTop: "4px", borderRadius: 2 }}></div>
+      
     </div>
   );
 };
@@ -103,16 +106,18 @@ export default function App() {
   const handleHeight = (e) => {
     //let k = Number(window.getComputedStyle(root).height.split("px")[0])
     if (status) {
-      const handler = e;
-      console.log(handler);
-      let k = 978;
-      console.log(e.clientY, k);
-      //let k = window.getComputedStyle(root).height
-      //element.style.height = (e.clientY +element.offsetTop) + 'px';
-      if (e.clientY > 20 && e.clientY < k && k - e.clientY > 20) {
-        //element.style.height = (k- e.clientY) + "px";
-        setHeight(k - e.clientY);
-      }
+      // let windowHeight = window.innerHeight;
+      setHeight(window.innerHeight - e.clientY - 50);
+      // const handler = e;
+      // console.log(handler);
+      // let k = 978;
+      // console.log(e.clientY, k);
+      // //let k = window.getComputedStyle(root).height
+      // //element.style.height = (e.clientY +element.offsetTop) + 'px';
+      // if (e.clientY > 20 && e.clientY < k && k - e.clientY > 20) {
+      //   //element.style.height = (k- e.clientY) + "px";
+      //   setHeight(k - e.clientY);
+      // }
     }
   };
 
@@ -122,6 +127,9 @@ export default function App() {
 
 
   const changeHeight = () => {
+    // const canvasEle = document.getElementById('bottomCanvas');
+    // const CanvasRCol = document.getElementById('bottomCanvasRightCol');
+    // const CanvasLCol = document.getElementById('bottomCanvasLeftCol');
     let heightCal = 20.6;
     if(clickTimeout !== null) {
       // double click logic
@@ -137,6 +145,11 @@ export default function App() {
           setHeight(50);
           heightStep = 0;
         } else {
+          // let height = window.innerHeight * heightCal * heightStep * 0.01;
+          // canvasEle.animate([{ height : height + 'px' }], {
+          //   duration: 500,
+          //   fill: "forwards"
+          // });
           setHeight(window.innerHeight * heightCal * heightStep * 0.01);
         }
         heightStep++;
@@ -192,17 +205,19 @@ export default function App() {
   }, [dispatch, first, groupsData, itemsData]);
 
   React.useEffect(() => {
-    window.addEventListener("mouseup", handleStatus(false));
+    document.addEventListener("mouseup", handleStatus(false));
+    // document.addEventListener("mousemove", handleHeight);
     return () => {
-      window.removeEventListener("mouseup", handleStatus(false));
+      document.removeEventListener("mouseup", handleStatus(false));
+      // document.removeEventListener("mousemove", handleHeight);
     };
   });
 
   return (
     <div
       style={{ position: "relative", marginTop: 40 }}
-      // onMouseMove={handleHeight}
-      // onMouseUp={handleStatus(false)}
+      onMouseMove={handleHeight}
+      onMouseUp={handleStatus(false)}
     >
       <div style={{
         width: 15,
@@ -230,7 +245,7 @@ export default function App() {
         style={{ marginLeft: "20px", resize: "vertical" }}
       >
         <Controls />
-        <div
+        <div id="bottomCanvasRightCol"
           style={{
             position: "absolute",
             bottom: `${height > 100 ? height - 105 : -70 + height}px`,
@@ -244,7 +259,7 @@ export default function App() {
         >
           <BookMarkControls />
         </div>
-        <div
+        <div id="bottomCanvasLeftCol"
           style={{
             position: "absolute",
             bottom: `${height > 100 ? height - 93 : -72 + height}px`,
@@ -318,7 +333,7 @@ export default function App() {
           <div />
         </Grid>
       </Grid>
-      <div
+      <div id="bottomCanvas"
         style={{
           position: "absolute",
           bottom: "0px",
@@ -335,7 +350,7 @@ export default function App() {
       >
         <BorderBottomLines
           handleStatus={handleStatus}
-          // handleHeight={handleHeight}
+          handleHeight={handleHeight}
           changeHeight={changeHeight}
           // heightStep={heightStep}
         />
