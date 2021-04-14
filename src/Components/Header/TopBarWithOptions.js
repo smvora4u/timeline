@@ -19,6 +19,12 @@ import BookMarkTitle from '../Timeline/Controls/BookMarkTitle';
 import { logoutUser } from "../../Firebase/FirebaseRegistration";
 import BookMarkTitleContext from "../Timeline/Controls/BookMarkTitle";
 
+import profileIcon from "../../Assets/tlProfileIcon.svg";
+import mailIcon from "../../Assets/tlMailIcon.svg";
+import mailPIcon from "../../Assets/tlMailPIcon.svg";
+import notificationIcon from "../../Assets/tlNotificationIcon.svg";
+import notificationPIcon from "../../Assets/tlNotificationPIcon.svg";
+
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -265,13 +271,21 @@ export default function PrimarySearchAppBar() {
 		  */}
             <div
               style={{
-                position: "absolute",
-                top: "30px",
-                left: "60px",
-                zIndex: 40000,
+                marginTop: "36px",
+                marginLeft: "60px",
+                display: "flex"
               }}
             >
               <SearchBar />
+              <IconButton onClick={''} style={{ padding: "0px", marginTop: "-2px", marginLeft: "30px" }}>
+                <img src={profileIcon} style={{ height: "45px" }} alt="color" />
+              </IconButton>
+              <IconButton onClick={''} style={{ padding: "0px", marginTop: "-2px", marginLeft: "15px" }}>
+                <img src={mailIcon} style={{ height: "45px" }} alt="color" />
+              </IconButton>
+              <IconButton onClick={''} style={{ padding: "0px", marginTop: "-2px", marginLeft: "15px" }}>
+                <img src={notificationIcon} style={{ height: "45px" }} alt="color" />
+              </IconButton>
             </div>
           </div>
 
