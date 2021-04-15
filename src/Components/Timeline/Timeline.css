@@ -96,6 +96,93 @@ div[role=slider] {
 	border: 1px solid rgb(180, 179, 179);
 }
 
+/* Canvas Item style strats */
+
+.canvasItemContainer * {
+	margin: 0;
+}
+
+.canvasItemContainer .canvasItem {
+	max-width: 500px;
+	text-transform: uppercase;
+}
+
+.canvasItemContainer .canvasItem.socialInfo {
+	max-width: 700px;
+}
+
+.canvasItemContainer .canvasItemTitle {
+	color: white;
+	margin: 0 29px;
+	background-color: #564882;
+	padding: 5px;
+}
+
+.canvasItemContainer .canvasItemDetail .detail {
+	width: 100%;
+	background: white;
+	position: relative;
+	padding: 0 20px;
+	display: flex;
+	justify-content: center;
+	color: black;
+}
+
+.canvasItemContainer .canvasItemDetail .topEdge {
+	width: 100%;
+	height: 0;
+	position: relative;
+	border-bottom: 29px solid white;
+	border-left: 29px solid transparent;
+	border-right: 29px solid transparent;
+}
+
+.canvasItemContainer .topEdge span{
+	position: absolute;
+}
+
+.canvasItemContainer .topEdge .arrowBorder {
+	right: -42px;
+    transform: rotate(45deg);
+    display: block;
+    border-bottom: 16px solid lightgreen;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    top: -3px;
+}
+
+.canvasItemContainer .topEdge .arrowBorder .arrowInner {
+	border-bottom: 10px solid black;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    transform: rotate(90);
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: -11px;
+}
+
+.canvasItemContainer .topEdge .arrowConnector {
+	height: 8px;
+    width: 5px;
+    background-color: red;
+    position: absolute;
+    right: -20px;
+    transform: rotate(45deg);
+    top: 9px;
+}
+
+.canvasItemContainer .canvasItemDetail .bottomEdge {
+	width: 100%;
+	height: 0;
+	border-top: 29px solid white;
+	border-left: 29px solid transparent;
+	border-right: 29px solid transparent;
+}
+
+/* Canvas Item style ends */
+
+
 
 /* .csv-reader-input {
   background-color: violet;

@@ -21,6 +21,8 @@ import { BACKGROUND_COLOR } from "../../Constants/StylesConstants";
 import { BACKGROUND_COLOR_CANVAS } from "../../Constants/StylesConstants";
 import ViewControls from "./Controls/ViewControls.js";
 
+import Packery from "packery";
+
 import optionBtnIcon from "../../Assets/optionsButton.svg";
 
 const BorderBottomLines = ({ handleStatus, handleHeight }) => {
@@ -159,6 +161,12 @@ export default function App() {
     }
 
   };
+
+  var packryElem = document.getElementById('canvasDrawer');
+  var pckry = new Packery(packryElem, {
+    itemSelector : '.canvasItem',
+    gutter: 10
+  });
 
 
   document.addEventListener('click', (e) => {
@@ -363,7 +371,219 @@ export default function App() {
               clipPath: "polygon(0% 0%, 75% 0%,100% 30px, 100% 100%,0% 100%)",
             }}
           ></div>
-          <div style={{ flex: 1 }}>{/* content */}</div>
+          <div style={{ flex: 1, padding: "0 10px 20px", marginTop:"50px", overflowY: "scroll" }}>
+            {/* bottom canvas content */}
+            <div id="canvasDrawer" class="canvasItemContainer">
+              <div class="canvasItem profile">
+                <div class="canvasItemTitle">
+                  <h4>Profile</h4>
+                </div>
+                <div class="canvasItemDetail">
+                  <div class="topEdge">
+                    <span class="arrowBorder">
+                      <span class="arrowInner"></span>
+                    </span>
+                    <span class="arrowConnector"></span>
+                  </div>
+                  <div class="detail">
+                    <div style={{ flex: "0.66 1 0%"}}>
+                      <div style={{ borderBottom: "2px solid blue", marginBottom: "5px", fontSize: "18px" }}>
+                        <span style={{ display: "inline-block", width: "110px" }}>Name</span>
+                        <span>Mia Akbar Syid</span>
+                      </div>
+                      <table>
+                        <tr>
+                          <td>Brithdate</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }}>29/04/1998</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "10px" }}>22</td>
+                        </tr>
+                        <tr>
+                          <td>Location</td>
+                          <td  style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Pakistan/Italy/USA/india</td>
+                        </tr>
+                        <tr>
+                          <td>Career:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Nurse</td>
+                        </tr>
+                        <tr>
+                          <td>Qualification:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Degree</td>
+                        </tr>
+                        <tr>
+                          <td>Network:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">The Brits School</td>
+                        </tr>
+                        <tr>
+                          <td>Relations:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">RSJ</td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div style={{ flex: "0.34 1 0%", padding: "25px 0 0 10px"}}>
+                      <img alt="Profile" style={{ width: "100%", borderRadius: "7px" }} src="https://static.hollywoodreporter.com/sites/default/files/2014/10/scarlett_johansson_sunglasses_main.jpg" />
+                    </div>
+                  </div>
+                  <div class="bottomEdge"></div>
+                </div>
+              </div>
+              <div class="canvasItem ratingMeter">
+                <div class="canvasItemTitle">
+                  <h4>Profile</h4>
+                </div>
+                <div class="canvasItemDetail">
+                  <div class="topEdge">
+                    <span class="arrowBorder">
+                      <span class="arrowInner"></span>
+                    </span>
+                    <span class="arrowConnector"></span>
+                  </div>
+                  <div class="detail">
+                    <div style={{ flex: "0.66 1 0%"}}>
+                      <div style={{ borderBottom: "2px solid blue", marginBottom: "5px", fontSize: "18px" }}>
+                        <span style={{ display: "inline-block", width: "110px" }}>Name</span>
+                        <span>Mia Akbar Syid</span>
+                      </div>
+                      <table>
+                        <tr>
+                          <td>Brithdate</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }}>29/04/1998</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "10px" }}>22</td>
+                        </tr>
+                        <tr>
+                          <td>Location</td>
+                          <td  style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Pakistan/Italy/USA/india</td>
+                        </tr>
+                        <tr>
+                          <td>Career:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Nurse</td>
+                        </tr>
+                        <tr>
+                          <td>Qualification:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Degree</td>
+                        </tr>
+                        <tr>
+                          <td>Network:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">The Brits School</td>
+                        </tr>
+                        <tr>
+                          <td>Relations:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">RSJ</td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div style={{ flex: "0.34 1 0%", padding: "25px 0 0 10px"}}>
+                      <img alt="Profile" style={{ width: "100%", borderRadius: "7px" }} src="https://static.hollywoodreporter.com/sites/default/files/2014/10/scarlett_johansson_sunglasses_main.jpg" />
+                    </div>
+                  </div>
+                  <div class="bottomEdge"></div>
+                </div>
+              </div>
+              <div class="canvasItem socialInfo">
+                <div class="canvasItemTitle">
+                  <h4>Profile</h4>
+                </div>
+                <div class="canvasItemDetail">
+                  <div class="topEdge">
+                    <span class="arrowBorder">
+                      <span class="arrowInner"></span>
+                    </span>
+                    <span class="arrowConnector"></span>
+                  </div>
+                  <div class="detail">
+                    <div style={{ flex: "0.66 1 0%"}}>
+                      <div style={{ borderBottom: "2px solid blue", marginBottom: "5px", fontSize: "18px" }}>
+                        <span style={{ display: "inline-block", width: "110px" }}>Name</span>
+                        <span>Mia Akbar Syid</span>
+                      </div>
+                      <table>
+                        <tr>
+                          <td>Brithdate</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }}>29/04/1998</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "10px" }}>22</td>
+                        </tr>
+                        <tr>
+                          <td>Location</td>
+                          <td  style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Pakistan/Italy/USA/india</td>
+                        </tr>
+                        <tr>
+                          <td>Career:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Nurse</td>
+                        </tr>
+                        <tr>
+                          <td>Qualification:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Degree</td>
+                        </tr>
+                        <tr>
+                          <td>Network:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">The Brits School</td>
+                        </tr>
+                        <tr>
+                          <td>Relations:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">RSJ</td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div style={{ flex: "0.34 1 0%", padding: "25px 0 0 10px"}}>
+                      <img alt="Profile" style={{ width: "100%", borderRadius: "7px" }} src="https://static.hollywoodreporter.com/sites/default/files/2014/10/scarlett_johansson_sunglasses_main.jpg" />
+                    </div>
+                  </div>
+                  <div class="bottomEdge"></div>
+                </div>
+              </div>
+              <div class="canvasItem node">
+                <div class="canvasItemTitle">
+                  <h4>Profile</h4>
+                </div>
+                <div class="canvasItemDetail">
+                  <div class="topEdge">
+                    <span class="arrowBorder">
+                      <span class="arrowInner"></span>
+                    </span>
+                    <span class="arrowConnector"></span>
+                  </div>
+                  <div class="detail">
+                    <div style={{ flex: "0.66 1 0%"}}>
+                      <div style={{ borderBottom: "2px solid blue", marginBottom: "5px", fontSize: "18px" }}>
+                        <span style={{ display: "inline-block", width: "110px" }}>Name</span>
+                        <span>Mia Akbar Syid</span>
+                      </div>
+                      <table>
+                        <tr>
+                          <td>Brithdate</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }}>29/04/1998</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "10px" }}>22</td>
+                        </tr>
+                        <tr>
+                          <td>Location</td>
+                          <td  style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Pakistan/Italy/USA/india</td>
+                        </tr>
+                        <tr>
+                          <td>Career:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Nurse</td>
+                        </tr>
+                        <tr>
+                          <td>Qualification:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Degree</td>
+                        </tr>
+                        <tr>
+                          <td>Network:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">The Brits School</td>
+                        </tr>
+                        <tr>
+                          <td>Relations:</td>
+                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">RSJ</td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div style={{ flex: "0.34 1 0%", padding: "25px 0 0 10px"}}>
+                      <img alt="Profile" style={{ width: "100%", borderRadius: "7px" }} src="https://static.hollywoodreporter.com/sites/default/files/2014/10/scarlett_johansson_sunglasses_main.jpg" />
+                    </div>
+                  </div>
+                  <div class="bottomEdge"></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div
             style={{
               width: "50px",
