@@ -139,7 +139,7 @@ const EventDetails = ({ item }) => {
               </span>
             </div>
             <div className="event-detail-icons" style={{ marginLeft: 24 }}>
-              <img onMouseLeave={() => timeAgoHoverOut()} onMouseEnter={() => timeAgoHover()} src={require("../../../Assets/timeAgoButton.svg")}
+              <img onMouseLeave={() => timeAgoHoverOut()} onMouseEnter={() => timeAgoHover()} src={require("../../../Assets/timeAgoButton.svg").default}
                 style={{
                   width: 42,
                   margin: '0 6px',
@@ -154,21 +154,21 @@ const EventDetails = ({ item }) => {
                 style={{ fontWeight: 600, fontSize: 16, cursor: 'pointer' }}>
                 {timeSince(item.start, 1)}
               </span>
-              <img src={require("../../../Assets/shareButton.svg")}
+              <img src={require("../../../Assets/shareButton.svg").default}
                 style={{
                   width: 42,
                   margin: '0 6px'
                 }}
                 alt="rightHeader"
               />
-              <img src={require("../../../Assets/Flags/united-states-of-america.png")}
+              <img src={require("../../../Assets/Flags/united-states-of-america.png").default}
                 style={{
                   width: 42,
                   margin: '0 6px'
                 }}
                 alt="rightHeader"
               />
-              <img src={require("../../../Assets/verifiedIcon.svg")}
+              <img src={require("../../../Assets/verifiedIcon.svg").default}
                 style={{
                   width: 42,
                   margin: '0 6px'

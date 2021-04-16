@@ -393,28 +393,28 @@ export default function App() {
                       </div>
                       <table>
                         <tr>
-                          <td>Brithdate</td>
+                          <td style={{ paddingBottom: "10px" }}>Brithdate</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }}>29/04/1998</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "10px" }}>22</td>
                         </tr>
                         <tr>
-                          <td>Location</td>
+                          <td style={{ paddingBottom: "10px" }}>Location</td>
                           <td  style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Pakistan/Italy/USA/india</td>
                         </tr>
                         <tr>
-                          <td>Career:</td>
+                          <td style={{ paddingBottom: "10px" }}>Career:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Nurse</td>
                         </tr>
                         <tr>
-                          <td>Qualification:</td>
+                          <td style={{ paddingBottom: "10px" }}>Qualification:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Degree</td>
                         </tr>
                         <tr>
-                          <td>Network:</td>
+                          <td style={{ paddingBottom: "10px" }}>Network:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">The Brits School</td>
                         </tr>
                         <tr>
-                          <td>Relations:</td>
+                          <td style={{ paddingBottom: "10px" }}>Relations:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">RSJ</td>
                         </tr>
                       </table>
@@ -445,28 +445,28 @@ export default function App() {
                       </div>
                       <table>
                         <tr>
-                          <td>Brithdate</td>
+                          <td style={{ paddingBottom: "10px" }}>Brithdate</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }}>29/04/1998</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "10px" }}>22</td>
                         </tr>
                         <tr>
-                          <td>Location</td>
+                          <td style={{ paddingBottom: "10px" }}>Location</td>
                           <td  style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Pakistan/Italy/USA/india</td>
                         </tr>
                         <tr>
-                          <td>Career:</td>
+                          <td style={{ paddingBottom: "10px" }}>Career:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Nurse</td>
                         </tr>
                         <tr>
-                          <td>Qualification:</td>
+                          <td style={{ paddingBottom: "10px" }}>Qualification:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Degree</td>
                         </tr>
                         <tr>
-                          <td>Network:</td>
+                          <td style={{ paddingBottom: "10px" }}>Network:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">The Brits School</td>
                         </tr>
                         <tr>
-                          <td>Relations:</td>
+                          <td style={{ paddingBottom: "10px" }}>Relations:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">RSJ</td>
                         </tr>
                       </table>
@@ -497,28 +497,28 @@ export default function App() {
                       </div>
                       <table>
                         <tr>
-                          <td>Brithdate</td>
+                          <td style={{ paddingBottom: "10px" }}>Brithdate</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }}>29/04/1998</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "10px" }}>22</td>
                         </tr>
                         <tr>
-                          <td>Location</td>
+                          <td style={{ paddingBottom: "10px" }}>Location</td>
                           <td  style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Pakistan/Italy/USA/india</td>
                         </tr>
                         <tr>
-                          <td>Career:</td>
+                          <td style={{ paddingBottom: "10px" }}>Career:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Nurse</td>
                         </tr>
                         <tr>
-                          <td>Qualification:</td>
+                          <td style={{ paddingBottom: "10px" }}>Qualification:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Degree</td>
                         </tr>
                         <tr>
-                          <td>Network:</td>
+                          <td style={{ paddingBottom: "10px" }}>Network:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">The Brits School</td>
                         </tr>
                         <tr>
-                          <td>Relations:</td>
+                          <td style={{ paddingBottom: "10px" }}>Relations:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">RSJ</td>
                         </tr>
                       </table>
@@ -549,28 +549,28 @@ export default function App() {
                       </div>
                       <table>
                         <tr>
-                          <td>Brithdate</td>
+                          <td style={{ paddingBottom: "10px" }}>Brithdate</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }}>29/04/1998</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "10px" }}>22</td>
                         </tr>
                         <tr>
-                          <td>Location</td>
+                          <td style={{ paddingBottom: "10px" }}>Location</td>
                           <td  style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Pakistan/Italy/USA/india</td>
                         </tr>
                         <tr>
-                          <td>Career:</td>
+                          <td style={{ paddingBottom: "10px" }}>Career:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Nurse</td>
                         </tr>
                         <tr>
-                          <td>Qualification:</td>
+                          <td style={{ paddingBottom: "10px" }}>Qualification:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Degree</td>
                         </tr>
                         <tr>
-                          <td>Network:</td>
+                          <td style={{ paddingBottom: "10px" }}>Network:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">The Brits School</td>
                         </tr>
                         <tr>
-                          <td>Relations:</td>
+                          <td style={{ paddingBottom: "10px" }}>Relations:</td>
                           <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">RSJ</td>
                         </tr>
                       </table>
