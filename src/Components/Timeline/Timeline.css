@@ -118,6 +118,10 @@ div[role=slider] {
 	padding: 5px;
 }
 
+.canvasItemContainer .canvasItemTitle img {
+	margin-top: -3px;
+}
+
 .canvasItemContainer .canvasItemDetail .detail {
 	width: 100%;
 	background: white;

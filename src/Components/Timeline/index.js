@@ -376,7 +376,7 @@ export default function App() {
             <div id="canvasDrawer" class="canvasItemContainer">
               <div class="canvasItem profile">
                 <div class="canvasItemTitle">
-                  <h4>Profile</h4>
+                  <h4>Profile <img alt="female" src={require("../../Assets/femaleIcon.svg").default} /></h4>
                 </div>
                 <div class="canvasItemDetail">
                   <div class="topEdge">
@@ -428,7 +428,7 @@ export default function App() {
               </div>
               <div class="canvasItem ratingMeter">
                 <div class="canvasItemTitle">
-                  <h4>Profile</h4>
+                  <h4>Profile <img alt="female" src={require("../../Assets/maleIcon.svg").default} /></h4>
                 </div>
                 <div class="canvasItemDetail">
                   <div class="topEdge">
@@ -480,7 +480,7 @@ export default function App() {
               </div>
               <div class="canvasItem socialInfo">
                 <div class="canvasItemTitle">
-                  <h4>Profile</h4>
+                  <h4>Profile <img alt="female" src={require("../../Assets/femaleIcon.svg").default} /></h4>
                 </div>
                 <div class="canvasItemDetail">
                   <div class="topEdge">
@@ -532,7 +532,7 @@ export default function App() {
               </div>
               <div class="canvasItem node">
                 <div class="canvasItemTitle">
-                  <h4>Profile</h4>
+                  <h4>Profile <img src={require("../../Assets/maleIcon.svg").default} alt="male"/></h4>
                 </div>
                 <div class="canvasItemDetail">
                   <div class="topEdge">
