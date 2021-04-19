@@ -233,6 +233,10 @@ export default function App() {
     };
   });
 
+  const expandCanvasItemHandler = event => {
+    console.log('expand icon clicked..');
+  }
+
   return (
     <div
       style={{ position: "relative", marginTop: 40 }}
@@ -392,10 +396,12 @@ export default function App() {
                 </div>
                 <div class="canvasItemDetail">
                   <div class="topEdge">
-                    <span class="arrowBorder">
-                      <span class="arrowInner"></span>
+                    <span  className="arrow" onClick={expandCanvasItemHandler}>
+                      <span class="arrowBorder">
+                        <span class="arrowInner"></span>
+                      </span>
+                      <span class="arrowConnector"></span>
                     </span>
-                    <span class="arrowConnector"></span>
                   </div>
                   <div class="detail">
                     <div style={{ flex: "0.66 1 0%"}}>
@@ -442,14 +448,16 @@ export default function App() {
                 <div class="canvasItemTitle">
                   <h4>Profile <img alt="female" src={require("../../Assets/maleIcon.svg").default} /></h4>
                 </div>
-                <div class="canvasItemDetail">
-                  <div class="topEdge">
-                    <span class="arrowBorder">
-                      <span class="arrowInner"></span>
+                <div className="canvasItemDetail">
+                  <div className="topEdge">
+                    <span  className="arrow" onClick={expandCanvasItemHandler}>
+                      <span class="arrowBorder">
+                        <span class="arrowInner"></span>
+                      </span>
+                      <span class="arrowConnector"></span>
                     </span>
-                    <span class="arrowConnector"></span>
                   </div>
-                  <div class="detail">
+                  <div className="detail">
                     <div style={{ flex: "0.66 1 0%"}}>
                       <div style={{ borderBottom: "2px solid blue", marginBottom: "5px", fontSize: "18px" }}>
                         <span style={{ display: "inline-block", width: "110px" }}>Name</span>
@@ -487,21 +495,23 @@ export default function App() {
                       <img alt="Profile" style={{ width: "100%", borderRadius: "7px" }} src="https://static.hollywoodreporter.com/sites/default/files/2014/10/scarlett_johansson_sunglasses_main.jpg" />
                     </div>
                   </div>
-                  <div class="bottomEdge"></div>
+                  <div className="bottomEdge"></div>
                 </div>
               </div>
-              <div class="canvasItem socialInfo">
-                <div class="canvasItemTitle">
+              <div className="canvasItem socialInfo">
+                <div className="canvasItemTitle">
                   <h4>Profile <img alt="female" src={require("../../Assets/femaleIcon.svg").default} /></h4>
                 </div>
-                <div class="canvasItemDetail">
-                  <div class="topEdge">
-                    <span class="arrowBorder">
-                      <span class="arrowInner"></span>
+                <div className="canvasItemDetail">
+                  <div className="topEdge">
+                    <span  className="arrow" onClick={expandCanvasItemHandler}>
+                      <span class="arrowBorder">
+                        <span class="arrowInner"></span>
+                      </span>
+                      <span class="arrowConnector"></span>
                     </span>
-                    <span class="arrowConnector"></span>
                   </div>
-                  <div class="detail">
+                  <div className="detail">
                     <div style={{ flex: "0.66 1 0%"}}>
                       <div style={{ borderBottom: "2px solid blue", marginBottom: "5px", fontSize: "18px" }}>
                         <span style={{ display: "inline-block", width: "110px" }}>Name</span>
@@ -539,21 +549,23 @@ export default function App() {
                       <img alt="Profile" style={{ width: "100%", borderRadius: "7px" }} src="https://static.hollywoodreporter.com/sites/default/files/2014/10/scarlett_johansson_sunglasses_main.jpg" />
                     </div>
                   </div>
-                  <div class="bottomEdge"></div>
+                  <div className="bottomEdge"></div>
                 </div>
               </div>
-              <div class="canvasItem node">
-                <div class="canvasItemTitle">
+              <div className="canvasItem node">
+                <div className="canvasItemTitle">
                   <h4>Profile <img src={require("../../Assets/maleIcon.svg").default} alt="male"/></h4>
                 </div>
-                <div class="canvasItemDetail">
-                  <div class="topEdge">
-                    <span class="arrowBorder">
-                      <span class="arrowInner"></span>
+                <div className="canvasItemDetail">
+                  <div className="topEdge">
+                    <span className="arrow" onClick={expandCanvasItemHandler}>
+                      <span className="arrowBorder">
+                        <span className="arrowInner"></span>
+                      </span>
+                      <span className="arrowConnector"></span>
                     </span>
-                    <span class="arrowConnector"></span>
                   </div>
-                  <div class="detail">
+                  <div className="detail">
                     <div style={{ flex: "0.66 1 0%"}}>
                       <div style={{ borderBottom: "2px solid blue", marginBottom: "5px", fontSize: "18px" }}>
                         <span style={{ display: "inline-block", width: "110px" }}>Name</span>
@@ -593,7 +605,7 @@ export default function App() {
                       <img alt="Profile" style={{ width: "100%", borderRadius: "7px" }} src="https://static.hollywoodreporter.com/sites/default/files/2014/10/scarlett_johansson_sunglasses_main.jpg" />
                     </div>
                   </div>
-                  <div class="bottomEdge"></div>
+                  <div className="bottomEdge"></div>
                 </div>
               </div>
             </div>
@@ -607,7 +619,7 @@ export default function App() {
             }}
           ></div>
           <span 
-          class="canvasHandleControl"
+          className="canvasHandleControl"
           onClick={changeHeight}>
             <img 
               style={{ margin: "3px"}} 

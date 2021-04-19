@@ -145,6 +145,11 @@ div[role=slider] {
 	position: absolute;
 }
 
+.canvasItemContainer .topEdge .arrow{
+	right: 0;
+	cursor: pointer;
+}
+
 .canvasItemContainer .topEdge .arrowBorder {
 	right: -42px;
     transform: rotate(45deg);
