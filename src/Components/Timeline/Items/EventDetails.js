@@ -95,6 +95,11 @@ const EventDetails = ({ item }) => {
   const timeZoneHover = () => {
     document.getElementsByClassName('timezone')[0].style.visibility = 'visible'
   }
+
+  const pintoLCDHandler = event => {
+    // TODO: pin event to LCD
+  }
+
   return (
     <>
       <div className="exact-time-ago">
@@ -220,7 +225,8 @@ const EventDetails = ({ item }) => {
           </div>
         </div>
         <div className={classes.footer} style={{ backgroundColor: color }}>
-          {tags.join(", ")}
+          <span>{tags.join(", ")}</span>
+          <span className="pintoLCD" onClick={pintoLCDHandler}></span>
         </div>
       </div>
     </>

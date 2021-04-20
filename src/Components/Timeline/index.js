@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
+import Dialog from "@material-ui/core/Dialog";
 import { useSelector, useDispatch } from "react-redux";
 import BookMarkControls from "./Controls/BookMarkControls.js";
 import TimeRangeSlider from "./Controls/TimeRangeSlider.js";
@@ -20,6 +21,11 @@ import "firebase/database";
 import { BACKGROUND_COLOR } from "../../Constants/StylesConstants";
 import { BACKGROUND_COLOR_CANVAS } from "../../Constants/StylesConstants";
 import ViewControls from "./Controls/ViewControls.js";
+import LCDProfile from "./LowerCanvasDrawer/LCDProfile";
+import LCDRatings from "./LowerCanvasDrawer/LCDRatings";
+import LCDNode from "./LowerCanvasDrawer/LCDNode";
+import LCDComments from "./LowerCanvasDrawer/LCDComments";
+import  LCDDialogContent from './LowerCanvasDrawer/LCDDialogContent';
 
 import Packery from "packery";
 import Draggabilly from 'packery'
@@ -105,22 +111,11 @@ export default function App() {
   const dispatch = useDispatch();
   const [isLoading, setLoading] = React.useState(true);
   const [first, setFirst] = React.useState(true);
+  const [select, setSelect] = React.useState(false);
 
   const handleHeight = (e) => {
-    //let k = Number(window.getComputedStyle(root).height.split("px")[0])
     if (status) {
-      // let windowHeight = window.innerHeight;
-      setHeight(window.innerHeight - e.clientY - 50);
-      // const handler = e;
-      // console.log(handler);
-      // let k = 978;
-      // console.log(e.clientY, k);
-      // //let k = window.getComputedStyle(root).height
-      // //element.style.height = (e.clientY +element.offsetTop) + 'px';
-      // if (e.clientY > 20 && e.clientY < k && k - e.clientY > 20) {
-      //   //element.style.height = (k- e.clientY) + "px";
-      //   setHeight(k - e.clientY);
-      // }
+      setHeight(window.innerHeight - e.clientY);
     }
   };
 
@@ -130,9 +125,6 @@ export default function App() {
 
 
   const changeHeight = () => {
-    // const canvasEle = document.getElementById('bottomCanvas');
-    // const CanvasRCol = document.getElementById('bottomCanvasRightCol');
-    // const CanvasLCol = document.getElementById('bottomCanvasLeftCol');
     let heightCal = 20.6;
     if(clickTimeout !== null) {
       // double click logic
@@ -148,11 +140,6 @@ export default function App() {
           setHeight(50);
           heightStep = 0;
         } else {
-          // let height = window.innerHeight * heightCal * heightStep * 0.01;
-          // canvasEle.animate([{ height : height + 'px' }], {
-          //   duration: 500,
-          //   fill: "forwards"
-          // });
           setHeight(window.innerHeight * heightCal * heightStep * 0.01);
         }
         heightStep++;
@@ -183,8 +170,12 @@ export default function App() {
 
   document.addEventListener('click', (e) => {
     let element = document.querySelector('.optionsBtn');
+    
+    if(!element) {
+      return;
+    }
 
-    if(element !== undefined && element.contains(e.target)) {
+    if(element.contains(e.target)) {
       element.classList.add('showOptions');
     } else {
       element.classList.remove('showOptions');
@@ -232,9 +223,23 @@ export default function App() {
       // document.removeEventListener("mousemove", handleHeight);
     };
   });
+  
+  
+  const handleSelect = () => {
+    // dispatch(bookmarkReadyToAdd({ id, title }));
+    setSelect(true);
+  };
+  const handleUnSelect = () => {
+    // dispatch(bookmarkReadyToAdd(null));
+    setSelect(false);
+  };
 
-  const expandCanvasItemHandler = event => {
-    console.log('expand icon clicked..');
+  const [LCDContentData, setLCDContentData] = useState({});
+  
+  const expandCanvasItem = (data) => {
+    console.log('data', data);
+    setLCDContentData(data);
+    handleSelect();
   }
 
   return (
@@ -308,40 +313,40 @@ export default function App() {
             alignItems: "flex-start",
           }}
         >
-          <div class="optionsBtn">
-            <IconButton onClick={''} style={{ padding: "0px", marginRight: "50px" }}>
+          <div className="optionsBtn">
+            <IconButton style={{ padding: "0px", marginRight: "50px" }}>
               <img src={optionBtnIcon} style={{ height: "45px" }} alt="color" />
             </IconButton>
-            <ul class="optionsMenu">
+            <ul className="optionsMenu">
               <li>
                 <span>Ctrl Zoom Lock</span>
-                <span class="toggleBtn"></span>
+                <span className="toggleBtn"></span>
               </li>
               <li>
                 <span>Files Tabs</span>
-                <span class="toggleBtn"></span>
+                <span className="toggleBtn"></span>
               </li>
               <li>
                 <span>Profile Tabs</span>
-                <span class="toggleBtn"></span>
+                <span className="toggleBtn"></span>
               </li>
               <li>
                 <span>Tags Tabs</span>
-                <span class="toggleBtn"></span>
+                <span className="toggleBtn"></span>
               </li>
               <li>
                 <span>Bookmark Title Display</span>
-                <span class="toggleBtn"></span>
+                <span className="toggleBtn"></span>
               </li>
               <hr />
               <li>
                 <span>Background Colors</span>
-                <span class="toggleBtn"></span>
+                <span className="toggleBtn"></span>
               </li>
               <li>
                 <span>Background Picture</span>
                 <i></i>
-                <span class="toggleBtn"></span>
+                <span className="toggleBtn"></span>
               </li>
             </ul>
           </div>
@@ -378,7 +383,7 @@ export default function App() {
           changeHeight={changeHeight}
           // heightStep={heightStep}
         />
-        <div class="canvasHandle">
+        <div className="canvasHandle">
           <div
             style={{
               width: "50px",
@@ -389,225 +394,21 @@ export default function App() {
           ></div>
           <div style={{ flex: 1, padding: "0 30px 20px", marginTop:"50px", overflowY: "scroll" }}>
             {/* bottom canvas content */}
-            <div id="canvasDrawer" class="canvasItemContainer">
-              <div class="canvasItem profile">
-                <div class="canvasItemTitle">
-                  <h4>Profile <img alt="female" src={require("../../Assets/femaleIcon.svg").default} /></h4>
-                </div>
-                <div class="canvasItemDetail">
-                  <div class="topEdge">
-                    <span  className="arrow" onClick={expandCanvasItemHandler}>
-                      <span class="arrowBorder">
-                        <span class="arrowInner"></span>
-                      </span>
-                      <span class="arrowConnector"></span>
-                    </span>
-                  </div>
-                  <div class="detail">
-                    <div style={{ flex: "0.66 1 0%"}}>
-                      <div style={{ borderBottom: "2px solid blue", marginBottom: "5px", fontSize: "18px" }}>
-                        <span style={{ display: "inline-block", width: "110px" }}>Name</span>
-                        <span>Mia Akbar Syid</span>
-                      </div>
-                      <table>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Brithdate</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }}>29/04/1998</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "10px" }}>22</td>
-                        </tr>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Location</td>
-                          <td  style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Pakistan/Italy/USA/india</td>
-                        </tr>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Career:</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Nurse</td>
-                        </tr>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Qualification:</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Degree</td>
-                        </tr>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Network:</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">The Brits School</td>
-                        </tr>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Relations:</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">RSJ</td>
-                        </tr>
-                      </table>
-                    </div>
-                    <div style={{ flex: "0.34 1 0%", padding: "25px 0 0 10px"}}>
-                      <img alt="Profile" style={{ width: "100%", borderRadius: "7px" }} src="https://static.hollywoodreporter.com/sites/default/files/2014/10/scarlett_johansson_sunglasses_main.jpg" />
-                    </div>
-                  </div>
-                  <div class="bottomEdge"></div>
-                </div>
-              </div>
-              <div class="canvasItem ratingMeter">
-                <div class="canvasItemTitle">
-                  <h4>Profile <img alt="female" src={require("../../Assets/maleIcon.svg").default} /></h4>
-                </div>
-                <div className="canvasItemDetail">
-                  <div className="topEdge">
-                    <span  className="arrow" onClick={expandCanvasItemHandler}>
-                      <span class="arrowBorder">
-                        <span class="arrowInner"></span>
-                      </span>
-                      <span class="arrowConnector"></span>
-                    </span>
-                  </div>
-                  <div className="detail">
-                    <div style={{ flex: "0.66 1 0%"}}>
-                      <div style={{ borderBottom: "2px solid blue", marginBottom: "5px", fontSize: "18px" }}>
-                        <span style={{ display: "inline-block", width: "110px" }}>Name</span>
-                        <span>Mia Akbar Syid</span>
-                      </div>
-                      <table>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Brithdate</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }}>29/04/1998</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "10px" }}>22</td>
-                        </tr>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Location</td>
-                          <td  style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Pakistan/Italy/USA/india</td>
-                        </tr>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Career:</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Nurse</td>
-                        </tr>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Qualification:</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Degree</td>
-                        </tr>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Network:</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">The Brits School</td>
-                        </tr>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Relations:</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">RSJ</td>
-                        </tr>
-                      </table>
-                    </div>
-                    <div style={{ flex: "0.34 1 0%", padding: "25px 0 0 10px"}}>
-                      <img alt="Profile" style={{ width: "100%", borderRadius: "7px" }} src="https://static.hollywoodreporter.com/sites/default/files/2014/10/scarlett_johansson_sunglasses_main.jpg" />
-                    </div>
-                  </div>
-                  <div className="bottomEdge"></div>
-                </div>
-              </div>
-              <div className="canvasItem socialInfo">
-                <div className="canvasItemTitle">
-                  <h4>Profile <img alt="female" src={require("../../Assets/femaleIcon.svg").default} /></h4>
-                </div>
-                <div className="canvasItemDetail">
-                  <div className="topEdge">
-                    <span  className="arrow" onClick={expandCanvasItemHandler}>
-                      <span class="arrowBorder">
-                        <span class="arrowInner"></span>
-                      </span>
-                      <span class="arrowConnector"></span>
-                    </span>
-                  </div>
-                  <div className="detail">
-                    <div style={{ flex: "0.66 1 0%"}}>
-                      <div style={{ borderBottom: "2px solid blue", marginBottom: "5px", fontSize: "18px" }}>
-                        <span style={{ display: "inline-block", width: "110px" }}>Name</span>
-                        <span>Mia Akbar Syid</span>
-                      </div>
-                      <table>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Brithdate</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }}>29/04/1998</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "10px" }}>22</td>
-                        </tr>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Location</td>
-                          <td  style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Pakistan/Italy/USA/india</td>
-                        </tr>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Career:</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Nurse</td>
-                        </tr>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Qualification:</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Degree</td>
-                        </tr>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Network:</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">The Brits School</td>
-                        </tr>
-                        <tr>
-                          <td style={{ paddingBottom: "10px" }}>Relations:</td>
-                          <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">RSJ</td>
-                        </tr>
-                      </table>
-                    </div>
-                    <div style={{ flex: "0.34 1 0%", padding: "25px 0 0 10px"}}>
-                      <img alt="Profile" style={{ width: "100%", borderRadius: "7px" }} src="https://static.hollywoodreporter.com/sites/default/files/2014/10/scarlett_johansson_sunglasses_main.jpg" />
-                    </div>
-                  </div>
-                  <div className="bottomEdge"></div>
-                </div>
-              </div>
-              <div className="canvasItem node">
-                <div className="canvasItemTitle">
-                  <h4>Profile <img src={require("../../Assets/maleIcon.svg").default} alt="male"/></h4>
-                </div>
-                <div className="canvasItemDetail">
-                  <div className="topEdge">
-                    <span className="arrow" onClick={expandCanvasItemHandler}>
-                      <span className="arrowBorder">
-                        <span className="arrowInner"></span>
-                      </span>
-                      <span className="arrowConnector"></span>
-                    </span>
-                  </div>
-                  <div className="detail">
-                    <div style={{ flex: "0.66 1 0%"}}>
-                      <div style={{ borderBottom: "2px solid blue", marginBottom: "5px", fontSize: "18px" }}>
-                        <span style={{ display: "inline-block", width: "110px" }}>Name</span>
-                        <span>Mia Akbar Syid</span>
-                      </div>
-                      <table>
-                        <tbody>
-                          <tr>
-                            <td style={{ paddingBottom: "10px" }}>Brithdate</td>
-                            <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }}>29/04/1998</td>
-                            <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "10px" }}>22</td>
-                          </tr>
-                          <tr>
-                            <td style={{ paddingBottom: "10px" }}>Location</td>
-                            <td  style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Pakistan/Italy/USA/india</td>
-                          </tr>
-                          <tr>
-                            <td style={{ paddingBottom: "10px" }}>Career:</td>
-                            <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Nurse</td>
-                          </tr>
-                          <tr>
-                            <td style={{ paddingBottom: "10px" }}>Qualification:</td>
-                            <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">Degree</td>
-                          </tr>
-                          <tr>
-                            <td style={{ paddingBottom: "10px" }}>Network:</td>
-                            <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">The Brits School</td>
-                          </tr>
-                          <tr>
-                            <td style={{ paddingBottom: "10px" }}>Relations:</td>
-                            <td style={{ borderLeft: "2px solid #859fcc", paddingLeft: "15px" }} colSpan="2">RSJ</td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div style={{ flex: "0.34 1 0%", padding: "25px 0 0 10px"}}>
-                      <img alt="Profile" style={{ width: "100%", borderRadius: "7px" }} src="https://static.hollywoodreporter.com/sites/default/files/2014/10/scarlett_johansson_sunglasses_main.jpg" />
-                    </div>
-                  </div>
-                  <div className="bottomEdge"></div>
-                </div>
-              </div>
+            <div id="canvasDrawer" className="canvasItemContainer">
+              
+              {/* LCD Profile Item */}
+              {groupsData.map((group, index) => {
+                return <LCDProfile group={group} expandCanvasItem={expandCanvasItem} />
+              })}
+
+              {/* LCD Ratings Item */}
+              <LCDRatings />
+
+              {/* LCD Node Item */}
+              <LCDNode />
+
+              {/* LCD Comments Item */}
+              <LCDComments />
             </div>
           </div>
           <div
@@ -628,6 +429,32 @@ export default function App() {
           </span>
         </div>
       </div>
+      <Dialog
+        open={select}
+        onClose={handleUnSelect}
+        aria-labelledby="item selected"
+        aria-describedby="select an even to view it's details"
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          overflowY: "scroll",
+          
+        }}
+        PaperProps={{
+          style: {
+            borderRadius: "10px",
+            overflow:"visible",
+            maxWidth: "initial"
+          },
+        }}
+        fullWidth={true}
+        maxWidth={"lg"}
+      >
+        <LCDDialogContent data={LCDContentData} />
+      </Dialog>
     </div>
   );
 }

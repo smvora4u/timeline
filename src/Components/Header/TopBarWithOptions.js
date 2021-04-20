@@ -277,13 +277,13 @@ export default function PrimarySearchAppBar() {
               }}
             >
               <SearchBar />
-              <IconButton onClick={''} style={{ padding: "0px", marginTop: "-2px", marginLeft: "30px" }}>
+              <IconButton style={{ padding: "0px", marginTop: "-2px", marginLeft: "30px" }}>
                 <img src={profileIcon} style={{ height: "45px" }} alt="color" />
               </IconButton>
-              <IconButton onClick={''} style={{ padding: "0px", marginTop: "-2px", marginLeft: "15px" }}>
+              <IconButton style={{ padding: "0px", marginTop: "-2px", marginLeft: "15px" }}>
                 <img src={mailIcon} style={{ height: "45px" }} alt="color" />
               </IconButton>
-              <IconButton onClick={''} style={{ padding: "0px", marginTop: "-2px", marginLeft: "15px" }}>
+              <IconButton style={{ padding: "0px", marginTop: "-2px", marginLeft: "15px" }}>
                 <img src={notificationIcon} style={{ height: "45px" }} alt="color" />
               </IconButton>
             </div>
